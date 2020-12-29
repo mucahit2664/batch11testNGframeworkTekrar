@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="running method">
+    <test name="method calsitirma">
+        <classes>
+            <class name="com.techproed.tests.D12_Alerts">
+                <methods>
+                    <include name="acceptAlerts"></include>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>
