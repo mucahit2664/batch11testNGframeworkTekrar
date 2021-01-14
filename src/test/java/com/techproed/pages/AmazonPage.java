@@ -11,27 +11,31 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class AmazonPage {
-   public AmazonPage(){
-       PageFactory.initElements(Driver.getDriver(),this);
-
+    public AmazonPage(){
+        PageFactory.initElements(Driver.getDriver(),this);
     }
-    @FindBy (xpath = "//tbody//tr")
-    public List<WebElement>satirlarListesi;
+    @FindBy(xpath = "//tbody//tr")
+    public List<WebElement> satirlarListesi;
+    @FindBy(xpath = "(//tr[1])//td")
+    public List<WebElement> birinciSatirElementleri;
+    @FindBy(id = "twotabsearchtextbox")
+    public WebElement aramaKutusu;
+    @FindBy(xpath = "//div[@class='a-section a-spacing-small a-spacing-top-small']")
+    public WebElement sonucYazisiElementi;
 
-   @FindBy(xpath = "//tr[1]//td")
-   public  List<WebElement>birinciSatirlarListesi;
+
+
     //AmazonPage sayfasinda istedigim satir ve sutun sayisi ile cagirdigimda
     // bana hucredeki yaziyi getirecek bir method olusturun
-    public String hucreYazisiniGetir(int satir, int sutun){
-String hucreXpath="//tr["+satir+"]//td["+sutun+"]";
-String hucredekiYazi=Driver.getDriver().findElement(By.xpath(hucreXpath)).getText();
-return hucredekiYazi;
+    public String hucreYazisiGetir(int satir,int sutun){
+        String hucreXpath="//tr["+satir+"]//td["+sutun+"]";
+        String hucredekiYazi=Driver.getDriver().findElement(By.xpath(hucreXpath)).getText();
+        return hucredekiYazi;
     }
-
-
-
-    public void enAltagit(){
+    public void enAltaGit(){
         Actions actions=new Actions(Driver.getDriver());
         actions.sendKeys(Keys.END).perform();
+
     }
+
 }
